@@ -1,4 +1,4 @@
-# minirocket v0.1.0
+# minirocket v1.0.0
 
 [![CircleCI](https://circleci.com/gh/kt3k/minirocket.svg?style=svg)](https://circleci.com/gh/kt3k/minirocket)
 [![codecov](https://codecov.io/gh/kt3k/minirocket/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/minirocket)
