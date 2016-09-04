@@ -33,6 +33,7 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
+    "callsite": "^1.0.0",
     "cli-dispatch": "^1.2.0"
   }
 }
