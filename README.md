@@ -90,6 +90,11 @@ Then it look for the .js file under the `./actions` directory (this is configura
 
 `no-action` event is emitted on `Minirocket` object with the value of the given action name.
 
+# Example
+
+- [bulbo](https://github.com/kt3k/bulbo)
+  - https://github.com/kt3k/bulbo/blob/master/src/bin/bulbo.js
+
 # License
 
 MIT
