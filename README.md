@@ -77,7 +77,7 @@ const minirocket = require('minirocket')
 - @param {object} actionDefinition The definition of the action selection
 - @param {object} argv The argv which is passed to each action
 - @param {object} options The options
-- @param {string} [options.actions] The directory under which it look for the action files
+- @param {string} [options.actions] The directory under which it look for the action files. Default is `{minirocket's callers dir}/actions`.
 - @return {Minirocket} Minirocket class instance
 
 This invokes the action function with the given argv.
