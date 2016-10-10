@@ -33,7 +33,9 @@ minirocket({
   foo: argv.foo,
   bar: argv.bar,
   [argv._.[0]]: true
-}, argv).on('no-action', action => {
+}, actionFunc => {
+  actionFunc(argv)
+}).on('no-action', action => {
   console.log(`No such action: ${action}`)
 })
 ```
@@ -75,8 +77,8 @@ const minirocket = require('minirocket')
 ## minirocket(actionDefinition, options)
 
 - @param {object} actionDefinition The definition of the action selection
-- @param {object} argv The argv which is passed to each action
 - @param {object} options The options
+- @param {Function} callback The callback of the action
 - @param {string} [options.actions] The directory under which it look for the action files. Default is `{minirocket's callers dir}/actions`.
 - @return {Minirocket} Minirocket class instance
 
@@ -84,7 +86,7 @@ This invokes the action function with the given argv.
 
 `actionDefinition` is an object. The each key should have a boolean value. The first key which has true (or truthy value) is chosen as the action name. If none of the keys have truthy values then it throws an error.
 
-Then it look for the .js file under the `./actions` directory (this is configurable by the options.actions). If it finds the `actionName`.js, then evaluate it and invoke it as function with the argv as the first parameter, otherwise it emits 'no-action' event.
+Then it look for the .js file under the `./actions` directory (this is configurable by the options.actions). If it finds the `actionName`.js, then `require`s it and passes it to the given callback function. If it cannot find it, then it emits 'no-action' event.
 
 ## no-action event
 

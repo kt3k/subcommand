@@ -1,4 +1,4 @@
-const dispatch = require('cli-dispatch')
+const lookup = require('cli-dispatch').lookup
 const callsite = require('callsite')
 const EventEmitter = require('events').EventEmitter
 const path = require('path')
@@ -14,11 +14,16 @@ util.inherits(Minirocket, EventEmitter)
 
 /**
  * @param {object} actionDefinition The action definition
- * @param {object} argv The argv paremeter
- * @param {object} options The options
+ * @param {object} [options] The options
+ * @param {Function} callback The callback of launch
  * @return {Minirocket}
  */
-module.exports = (actionDefinition, argv, options) => {
+module.exports = (actionDefinition, options, callback) => {
+  if (typeof options === 'function' && callback == null) {
+    callback = options
+    options = {}
+  }
+
   options = options || {}
 
   const minirocket = new Minirocket()
@@ -33,9 +38,9 @@ module.exports = (actionDefinition, argv, options) => {
     throw new Error('No action is available: ' + Object.keys(actionDefinition))
   }
 
-  dispatch(action, argv, {actions: options.actions, base: callersDir()}).on('no-action', action => {
-    minirocket.emit('no-action', action)
-  })
+  const actionFunc = lookup(action, {actions: options.actions, base: callersDir()})
+
+  setTimeout(() => actionFunc ? callback(actionFunc) : minirocket.emit('no-action', action))
 
   return minirocket
 }
