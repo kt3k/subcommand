@@ -1,3 +1,3 @@
-const logger = require('../logger')
+const logger = require("../logger");
 
-module.exports = argv => logger.log(`Hello, ${argv.name}!`)
+module.exports = (argv) => logger.log(`Hello, ${argv.name}!`);

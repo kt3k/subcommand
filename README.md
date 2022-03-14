@@ -43,18 +43,19 @@ minirocket({
 actions/foo.js:
 
 ```js
-module.exports = () => console.log('foo!')
+module.exports = () => console.log("foo!");
 ```
 
 actions/bar.js:
 
 ```js
-module.exports = ({name}) => console.log(`Hello, ${name}!`)
+module.exports = ({ name }) => console.log(`Hello, ${name}!`);
 ```
 
 actions/baz.js:
+
 ```js
-module.exports = () => console.log('baz')
+module.exports = () => console.log("baz");
 ```
 
 Then, main.js works like the following:
@@ -71,7 +72,7 @@ Then, main.js works like the following:
 # API
 
 ```js
-const minirocket = require('minirocket')
+const minirocket = require("minirocket");
 ```
 
 ## minirocket(actionDefinition, options)
@@ -79,18 +80,25 @@ const minirocket = require('minirocket')
 - @param {object} actionDefinition The definition of the action selection
 - @param {object} options The options
 - @param {Function} callback The callback of the action
-- @param {string} [options.actions] The directory under which it look for the action files. Default is `{minirocket's callers dir}/actions`.
+- @param {string} [options.actions] The directory under which it look for the
+  action files. Default is `{minirocket's callers dir}/actions`.
 - @return {Minirocket} Minirocket class instance
 
 This invokes the action function with the given argv.
 
-`actionDefinition` is an object. The each key should have a boolean value. The first key which has true (or truthy value) is chosen as the action name. If none of the keys have truthy values then it throws an error.
+`actionDefinition` is an object. The each key should have a boolean value. The
+first key which has true (or truthy value) is chosen as the action name. If none
+of the keys have truthy values then it throws an error.
 
-Then it look for the .js file under the `./actions` directory (this is configurable by the options.actions). If it finds the `actionName`.js, then `require`s it and passes it to the given callback function. If it cannot find it, then it emits 'no-action' event.
+Then it look for the .js file under the `./actions` directory (this is
+configurable by the options.actions). If it finds the `actionName`.js, then
+`require`s it and passes it to the given callback function. If it cannot find
+it, then it emits 'no-action' event.
 
 ## no-action event
 
-`no-action` event is emitted on `Minirocket` object with the value of the given action name.
+`no-action` event is emitted on `Minirocket` object with the value of the given
+action name.
 
 # Example
 

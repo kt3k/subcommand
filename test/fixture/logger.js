@@ -1,1 +1,3 @@
-exports.log = msg => { console.log(msg) }
+exports.log = (msg) => {
+  console.log(msg);
+};
