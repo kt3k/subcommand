@@ -1,24 +1,24 @@
 const lookup = require("cli-dispatch").lookup;
-const callsite = require("callsite");
 const EventEmitter = require("events").EventEmitter;
-const path = require("path");
 const util = require("util");
 
-const callersDir = () => path.dirname(callsite()[2].getFileName());
-
-function Minirocket() {
+function SubcommandDispatcher() {
   EventEmitter.call(this);
 }
 
-util.inherits(Minirocket, EventEmitter);
+util.inherits(SubcommandDispatcher, EventEmitter);
 
 /**
+ * @param {string} dir The directory to look up the actions
  * @param {object} actionDefinition The action definition
  * @param {object} [options] The options
  * @param {Function} callback The callback of launch
  * @return {Minirocket}
  */
-module.exports = (actionDefinition, options, callback) => {
+module.exports = (dir, actionDefinition, options, callback) => {
+  if (typeof dir !== "string") {
+    throw new Error(`dir needs to be a string: ${typeof dir} is given`);
+  }
   if (typeof options === "function" && callback == null) {
     callback = options;
     options = {};
@@ -26,7 +26,7 @@ module.exports = (actionDefinition, options, callback) => {
 
   options = options || {};
 
-  const minirocket = new Minirocket();
+  const dispatcher = new SubcommandDispatcher();
 
   if (typeof actionDefinition !== "object") {
     throw new Error("actionDefinition have to be an object");
@@ -41,12 +41,14 @@ module.exports = (actionDefinition, options, callback) => {
 
   const actionFunc = lookup(action, {
     actions: options.actions,
-    base: callersDir(),
+    base: dir,
   });
 
+  console.log("callback", callback);
+
   setTimeout(() =>
-    actionFunc ? callback(actionFunc) : minirocket.emit("no-action", action)
+    actionFunc ? callback(actionFunc) : dispatcher.emit("no-action", action)
   );
 
-  return minirocket;
+  return dispatcher;
 };

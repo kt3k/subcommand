@@ -1,6 +1,6 @@
 ---
-version: 2.0.0
-commit: ":up: chore(version): bump to v%.%.%"
+version: 0.1.0
+commit: "chore: v%.%.%"
 files:
-  README.md: v%.%.%
+  README.md: '@kt3k/subcommand v%.%.%'
   package.json: '"version": "%.%.%"'

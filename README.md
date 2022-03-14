@@ -1,14 +1,13 @@
-# minirocket v2.0.0
+# @kt3k/subcommand v0.1.0
 
 [![CircleCI](https://circleci.com/gh/kt3k/minirocket.svg?style=svg)](https://circleci.com/gh/kt3k/minirocket)
 [![codecov](https://codecov.io/gh/kt3k/minirocket/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/minirocket)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-> Quick scaffold for cli tool development.
+> Utility for dispatching subcommand based on filename
 
 # Install
 
-    npm install minirocket
+    npm install @kt3k/subcommand
 
 # Usage
 
@@ -27,9 +26,9 @@ Then in main.js:
 
 ```js
 const argv = require('minimist')(process.argv.slice(2))
-const minirocket = require('minirocket')
+const subcommand = require('@kt3k/subcommand')
 
-minirocket({
+subcommand(__dirname, {
   foo: argv.foo,
   bar: argv.bar,
   [argv._.[0]]: true
@@ -72,11 +71,12 @@ Then, main.js works like the following:
 # API
 
 ```js
-const minirocket = require("minirocket");
+const subcommand = require("@kt3k/subcommand");
 ```
 
-## minirocket(actionDefinition, options)
+## subcommand(dir, actionDefinition, options, callback)
 
+- @param {string} dir The directory to look up actions
 - @param {object} actionDefinition The definition of the action selection
 - @param {object} options The options
 - @param {Function} callback The callback of the action
