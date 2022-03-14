@@ -1,7 +1,7 @@
 # @kt3k/subcommand v0.1.0
 
-[![CircleCI](https://circleci.com/gh/kt3k/minirocket.svg?style=svg)](https://circleci.com/gh/kt3k/minirocket)
-[![codecov](https://codecov.io/gh/kt3k/minirocket/branch/master/graph/badge.svg)](https://codecov.io/gh/kt3k/minirocket)
+[![ci](https://github.com/kt3k/subcommand/actions/workflows/ci.yml/badge.svg)](https://github.com/kt3k/subcommand/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/kt3k/subcommand/branch/main/graph/badge.svg)](https://codecov.io/gh/kt3k/subcommand)
 
 > Utility for dispatching subcommand based on filename
 
