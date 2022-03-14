@@ -1,4 +1,4 @@
-# @kt3k/subcommand v0.1.0
+# @kt3k/subcommand v1.0.0
 
 [![ci](https://github.com/kt3k/subcommand/actions/workflows/ci.yml/badge.svg)](https://github.com/kt3k/subcommand/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/kt3k/subcommand/branch/main/graph/badge.svg)](https://codecov.io/gh/kt3k/subcommand)

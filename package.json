@@ -1,6 +1,6 @@
 {
   "name": "@kt3k/subcommand",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Utility for dispatching subcommand based on filename",
   "main": "index.js",
   "scripts": {

@@ -1,6 +1,5 @@
----
-version: 0.1.0
-commit: "chore: v%.%.%"
+version: 1.0.0
+commit: 'chore: v%.%.%'
 files:
   README.md: '@kt3k/subcommand v%.%.%'
   package.json: '"version": "%.%.%"'
