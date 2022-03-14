@@ -1,7 +1,7 @@
 {
-  "name": "minirocket",
-  "version": "2.0.0",
-  "description": "Quick scaffold for cli tool development",
+  "name": "@kt3k/subcommand",
+  "version": "0.1.0",
+  "description": "Utility for dispatching subcommand based on filename",
   "main": "index.js",
   "scripts": {
     "test": "tape test.js",
@@ -32,7 +32,6 @@
     "tape": "^4.6.0"
   },
   "dependencies": {
-    "callsite": "^1.0.0",
     "cli-dispatch": "^1.3.0"
   }
 }
